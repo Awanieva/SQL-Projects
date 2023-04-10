@@ -7,11 +7,6 @@ from NashvilleHousing
 select *
 from NashvilleHousing
 
-Select SaleDateConverted, CONVERT(date,SaleDate)
-from NashvilleHousing	
-
-Update NashvilleHousing
-SET SaleDate = CONVERT(Date,SaleDate)
 
 ALTER TABLE NashvilleHousing
 Add SaleDateConverted Date;
