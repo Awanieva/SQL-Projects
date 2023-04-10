@@ -7,6 +7,8 @@ from NashvilleHousing
 select *
 from NashvilleHousing
 
+Select SaleDateConverted, CONVERT(date,SaleDate)
+from NashvilleHousing	
 
 ALTER TABLE NashvilleHousing
 Add SaleDateConverted Date;
