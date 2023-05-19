@@ -12,6 +12,7 @@ select COUNT(ID)  from airline_passenger_satisfaction$ AS Total_Passengers
 --Looking at the percentage of customer type the airline has (Firsttime/Returning)
 select [Customer Type], COUNT([ID]) AS Total_Customer,
 ROUND((COUNT([Customer Type])/MAX(ID)*100),2) as Percentage
+
 from airline_passenger_satisfaction$
 group by [Customer Type]
 order by Percentage desc
@@ -154,3 +155,36 @@ select Gender, COUNT(Gender) as Total_Customer
 from airline_passenger_satisfaction$
 GROUP BY Gender
 
+
+
+
+--AVERAGE DEPARTURE DELAY
+SELECT ROUND(AVG([Departure Delay]),2) AS Average_Departure_Delay
+from airline_passenger_satisfaction$
+
+
+--AVERAGE ARRIVAL  DELAY
+SELECT ROUND(AVG([Arrival Delay]),2) AS Average_Arrival_Delay
+from airline_passenger_satisfaction$
+
+
+
+
+--RATING LOOKING AT WHAT FACTOR CONTIBUTED THE MOST TO CUSTOMER SATISFACTION AND DISSATISFACTION  
+SELECT Satisfaction, 
+ROUND(AVG(([Departure and Arrival Time Convenience])),2) AS Departure_and_Arrival_Time_Convenience_Rating, 
+ROUND(AVG(([Ease of Online Booking])),2) AS Ease_Of_Online_Rating,
+ROUND(AVG(([Check-in Service])),2) AS Check_in_Service_Rating,
+ROUND(AVG(([Online Boarding])),2) AS Online_Boarding_Rating,
+ROUND(AVG(([Gate Location])),2) AS Gate_Location_Rating,
+ROUND(AVG(([On-board Service])),2) AS On_board_Service_Rating,
+ROUND(AVG(([Seat Comfort])),2) AS Seat_Comfort_Rating,
+ROUND(AVG(([Leg Room Service])),2) AS Leg_Room_Service_Rating,
+ROUND(AVG(([Cleanliness])),2) AS Cleanliness_Rating,
+ROUND(AVG(([Food and Drink])),2) AS Food_andDrink_Rating,
+ROUND(AVG(([In-flight Service])),2) AS In_flight_Service_Rating,
+ROUND(AVG(([In-flight Entertainment])),2) AS In_flight_Entertainment_Rating,
+ROUND(AVG(([Baggage Handling])),2) AS Baggage_Handling_Rating
+FROM airline_passenger_satisfaction$
+GROUP BY Satisfaction
+ORDER BY Satisfaction DESC
